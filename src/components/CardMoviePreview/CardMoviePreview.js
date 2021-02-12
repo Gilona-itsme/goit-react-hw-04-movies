@@ -1,5 +1,7 @@
 import React from "react";
 
+import style from "./CardMoviePreview.module.css";
+
 import {
   imgUrlPreview,
   imgPlaceholderPreview,
@@ -10,7 +12,7 @@ const CardMoviePreview = ({ id, title, name, releaseDate, poster_path }) => {
 
   return (
     <>
-      <h2>
+      <h2 className={style.Text}>
         {title || name}
         {/* {`${releaseDate.slice(0, 4)}`} */}
       </h2>

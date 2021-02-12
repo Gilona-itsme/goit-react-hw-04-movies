@@ -1,0 +1,16 @@
+.Form {
+  display: flex;
+  justify-content: center;
+}
+
+.Text {
+  text-align: center;
+  font-size: 25px;
+  margin-bottom: 20px;
+}
+
+.Input {
+  width: 250px;
+  font-size: 20px;
+  margin-right: 20px;
+}

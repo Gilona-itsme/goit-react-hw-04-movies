@@ -1,13 +1,17 @@
-import React, { Component } from "react";
+import React, { Component, lazy, Suspense } from "react";
 import { NavLink, Route, Switch } from "react-router-dom";
 
 import { fetchDetailsMovies } from "../services/Movies-Api";
-//import routes from "../routes";
 import Loader from "../components/Loader";
-import CardMovie from "../components/CardMovie";
+//import CardMovie from "../components/CardMovie";
 import Cast from "../components/Cast";
 import Reviews from "../components/Reviews";
 import routes from "../routes";
+import PrimeryButton from "../components/Button/Button";
+
+const CardMovie = lazy(() =>
+  import("../components/CardMovie" /* webpackChunkName: "card-movie" */)
+);
 
 class MovieDetailsView extends Component {
   state = {
@@ -17,13 +21,7 @@ class MovieDetailsView extends Component {
   componentDidMount() {
     const { movieId } = this.props.match.params;
 
-    this.setState({
-      isLoader: true,
-    });
-
-    fetchDetailsMovies(movieId).then((data) =>
-      this.setState({ movie: data, isLoader: false })
-    );
+    fetchDetailsMovies(movieId).then((data) => this.setState({ movie: data }));
   }
 
   handleGoBack = () => {
@@ -37,33 +35,46 @@ class MovieDetailsView extends Component {
   };
 
   render() {
-    const { isLoader, movie } = this.state;
+    const { movie } = this.state;
     const { match, location } = this.props;
 
     return (
       <>
-        <button type="button" onClick={this.handleGoBack}>
+        <PrimeryButton type="button" onClick={this.handleGoBack}>
           Go back
-        </button>
-        {isLoader && <Loader />}
-        {movie && <CardMovie {...movie} />}
+        </PrimeryButton>
+        {/* <button type="button" onClick={this.handleGoBack}>
+          Go back
+        </button> */}
+        <Suspense fallback={<Loader />}>
+          {movie && <CardMovie {...movie} />}
+        </Suspense>
+
         <h3>Additional information</h3>
-        <ul>
-          <li>
+        <ul style={{ display: "flex" }}>
+          <li style={{ marginLeft: "30px" }}>
             <NavLink
               to={{
                 pathname: `${match.url}/cast`,
-                state: { from: location.state.from },
+                state: { from: location?.state?.from || routes.homePage },
+              }}
+              activeStyle={{
+                color: "ButtonShadow",
+                borderBottom: "1px solid #000",
               }}
             >
               Cast
             </NavLink>
           </li>
-          <li>
+          <li style={{ marginLeft: "30px" }}>
             <NavLink
               to={{
                 pathname: `${match.url}/reviews`,
-                state: { from: location.state.from },
+                state: { from: location?.state?.from || routes.homePage },
+              }}
+              activeStyle={{
+                color: "ButtonShadow",
+                borderBottom: "1px solid #000",
               }}
             >
               Reviews

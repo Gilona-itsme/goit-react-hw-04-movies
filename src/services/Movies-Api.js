@@ -29,7 +29,7 @@ export const fetchMoviesWithQuery = async (
   include_adult = false
 ) => {
   try {
-    const { data } = await axios.get(`/search/movie/`, {
+    const { data } = await axios.get(`/search/movie`, {
       params: { language, page, include_adult, query },
     });
 
@@ -75,6 +75,7 @@ export const fetchReviews = async (movie_id, language = "en-US") => {
     });
     return response.data;
   } catch (error) {
+    console.log(error);
     return [];
   }
 };
@@ -82,7 +83,7 @@ const imgUrl = "https://image.tmdb.org/t/p/w300/";
 const imgUrlPreview = "https://image.tmdb.org/t/p/w200/";
 const imgPlaceholder = "https://dummyimage.com/300x450/b8abb8/606175.jpg";
 const imgPlaceholderPreview =
-  "https://dummyimage.com/300x450/b8abb8/606175.jpg";
+  "https://dummyimage.com/200x300/b8abb8/606175.jpg";
 const imgActor = "https://image.tmdb.org/t/p/w200";
 const imgActorPlaceholder = "https://dummyimage.com/200x300/b8abb8/606175.jpg";
 

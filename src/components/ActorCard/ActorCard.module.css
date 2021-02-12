@@ -1,0 +1,19 @@
+.card {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: flex-start;
+  /* width: 100px; */
+}
+
+.card__item {
+  flex-grow: 1;
+  flex-basis: 200px;
+  max-width: 200px;
+  margin-right: 20px;
+  text-align: center;
+  font-weight: 500;
+  color: rgba(39, 10, 53, 0.952);
+  text-decoration: none;
+  font-style: italic;
+}

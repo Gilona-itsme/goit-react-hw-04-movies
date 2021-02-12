@@ -6,7 +6,7 @@ export default function MoviesLoading() {
     <Loader
       role="alert"
       type="Circles"
-      color="#000"
+      color="#violet"
       width={40}
       height={40}
       style={{

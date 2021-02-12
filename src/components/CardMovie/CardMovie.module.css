@@ -1,0 +1,21 @@
+.image {
+  width: 300px;
+}
+
+.card {
+  display: flex;
+  font-size: larger;
+  margin-top: 20px;
+}
+
+.about {
+  margin-left: 40px;
+}
+
+.genres {
+  display: flex;
+}
+
+.genres__item:not(:first-child) {
+  margin-left: 10px;
+}
