@@ -1,0 +1,18 @@
+.Nav {
+  display: flex;
+  padding-top: 20px;
+  padding-bottom: 30px;
+  border-bottom: 2px solid rgba(32, 60, 80, 0.2);
+}
+
+.NavLink {
+  color: #000;
+}
+
+.NavLink:last-child {
+  margin-left: 20px;
+}
+
+.NavLink_active {
+  color: plum;
+}

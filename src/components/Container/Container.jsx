@@ -1,11 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import style from './Container.module.scss'
+
+const styles = {
+  //width: 1170,
+    marginLeft: 'auto',
+   marginRight: 'auto',
+  paddingLeft: 15,
+  paddingRight: 15,
+}
 
 const Container = ({children}) => {
     return (
-        <div className={style.container}>
+        <div style={styles}>
             {children}
         </div>
     );
