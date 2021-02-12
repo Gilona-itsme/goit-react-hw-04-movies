@@ -1,8 +1,8 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { NavLink, withRouter } from "react-router-dom";
 
 import CardMoviePreview from "../CardMoviePreview";
-//import routes from "../../routes";
 
 import style from "./MovieList.module.css";
 
@@ -36,6 +36,19 @@ const MovieList = ({ movies, match, location }) => {
       })}
     </ul>
   );
+};
+
+MovieList.protoTypes = {
+  movies: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+      profile_path: PropTypes.string.isRequired,
+      release_date: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+  match: PropTypes.object,
+  location: PropTypes.object,
 };
 
 export default withRouter(MovieList);

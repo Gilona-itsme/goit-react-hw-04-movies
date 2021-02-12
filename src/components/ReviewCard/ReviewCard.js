@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const ReviewCard = ({ reviews }) => {
   return (
@@ -13,6 +14,16 @@ const ReviewCard = ({ reviews }) => {
       </ul>
     </>
   );
+};
+
+ReviewCard.protoTypes = {
+  reviews: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      author: PropTypes.string.isRequired,
+      content: PropTypes.string.isRequired,
+    })
+  ).isRequired,
 };
 
 export default ReviewCard;

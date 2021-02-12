@@ -1,10 +1,10 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import { imgUrl, imgPlaceholder } from "../../services/Movies-Api";
 import style from "./CardMovie.module.css";
 
 const CardMovie = ({
-  id,
   title,
   name,
   genres,
@@ -42,6 +42,21 @@ const CardMovie = ({
       </div>
     </div>
   );
+};
+
+CardMovie.protoTypes = {
+  title: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  genres: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+    })
+  ),
+  overview: PropTypes.string.isRequired,
+  vote_average: PropTypes.number.isRequired,
+  poster_path: PropTypes.string.isRequired,
+  release_date: PropTypes.string.isRequired,
 };
 
 export default CardMovie;

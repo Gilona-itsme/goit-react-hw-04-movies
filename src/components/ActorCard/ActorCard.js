@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { imgActor, imgActorPlaceholder } from "../../services/Movies-Api";
 import style from "./ActorCard.module.css";
 
@@ -22,6 +23,17 @@ const ActorCard = ({ cast }) => {
       </ul>
     </>
   );
+};
+
+ActorCard.protoTypes = {
+  cast: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+      profile_path: PropTypes.string.isRequired,
+      character: PropTypes.string.isRequired,
+    })
+  ).isRequired,
 };
 
 export default ActorCard;

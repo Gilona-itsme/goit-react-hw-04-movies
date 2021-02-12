@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import style from "./CardMoviePreview.module.css";
 
@@ -7,15 +8,10 @@ import {
   imgPlaceholderPreview,
 } from "../../services/Movies-Api";
 
-const CardMoviePreview = ({ id, title, name, releaseDate, poster_path }) => {
-  //const date = releaseDate.slice(0, 4);
-
+const CardMoviePreview = ({ title, name, poster_path }) => {
   return (
     <>
-      <h2 className={style.Text}>
-        {title || name}
-        {/* {`${releaseDate.slice(0, 4)}`} */}
-      </h2>
+      <h2 className={style.Text}>{title || name}</h2>
       <img
         src={
           (poster_path && imgUrlPreview + poster_path) || imgPlaceholderPreview
@@ -24,6 +20,12 @@ const CardMoviePreview = ({ id, title, name, releaseDate, poster_path }) => {
       />
     </>
   );
+};
+
+CardMoviePreview.protoTypes = {
+  title: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  poster_path: PropTypes.string.isRequired,
 };
 
 export default CardMoviePreview;
